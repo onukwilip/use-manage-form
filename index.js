@@ -41,21 +41,21 @@ export const useForm = (/**@type FormOptions */ options = {}) => {
   const formIsValid =
     typeof options.validateOptions === "function" && options?.validateOptions();
 
-  const executeBlurHandlers = () => {
+  const executeBlurHandlers = useCallback(() => {
     if (Array.isArray(options?.blurHandlers)) {
       options?.blurHandlers.forEach((blurHandler) => {
         blurHandler();
       });
     }
-  };
+  }, [options?.blurHandlers]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     if (Array.isArray(options?.resetHandlers)) {
       options?.resetHandlers.forEach((resetHandler) => {
         resetHandler();
       });
     }
-  };
+  }, [options?.resetHandlers]);
 
   return {
     executeBlurHandlers: executeBlurHandlers,
