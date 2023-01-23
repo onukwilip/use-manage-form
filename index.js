@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
+const { useCallback, useState } = require("react");
 
-export const useInput = (validateFunction) => {
+const useInput = (validateFunction) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [inputWasTouched, setInputWasTouched] = useState(false);
 
@@ -37,7 +37,7 @@ class FormOptions {
     this.resetHandlers = [];
   }
 }
-export const useForm = (/**@type FormOptions */ options = {}) => {
+const useForm = (/**@type FormOptions */ options = {}) => {
   const formIsValid =
     typeof options.validateOptions === "function" && options?.validateOptions();
 
@@ -62,4 +62,9 @@ export const useForm = (/**@type FormOptions */ options = {}) => {
     formIsValid: formIsValid,
     reset: reset,
   };
+};
+
+module.exports = {
+  useInput,
+  useForm,
 };
