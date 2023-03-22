@@ -1,6 +1,13 @@
 const { useCallback, useState } = require("react");
 
-const useInput = (options) => {
+class InpuParams {
+  constructor() {
+    this.validateFunction = () => {};
+    this.defaultValue = "";
+  }
+}
+
+const useInput = (/**@type InpuParams | ()=>{} */ options) => {
   const [enteredValue, setEnteredValue] = useState(
     typeof options === "object" ? options?.defaultValue || "" : ""
   );

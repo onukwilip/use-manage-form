@@ -1,6 +1,6 @@
 {
   "name": "use-manage-form",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react hook used to manage form and form input states",
   "main": "index.js",
   "scripts": {
