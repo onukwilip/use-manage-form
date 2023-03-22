@@ -9,7 +9,7 @@ class InpuParams {
 
 const useInput = (/**@type InpuParams | ()=>{} */ options) => {
   const [enteredValue, setEnteredValue] = useState(
-    typeof options === "object" ? options?.defaultValue || "" : ""
+    typeof options === "object" ? options?.defaultValue : ""
   );
   const [inputWasTouched, setInputWasTouched] = useState(false);
 
