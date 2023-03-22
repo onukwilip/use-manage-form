@@ -1,10 +1,17 @@
 const { useCallback, useState } = require("react");
 
-const useInput = (validateFunction) => {
-  const [enteredValue, setEnteredValue] = useState("");
+const useInput = (options) => {
+  const [enteredValue, setEnteredValue] = useState(
+    typeof options === "object" ? options?.defaultValue || "" : ""
+  );
   const [inputWasTouched, setInputWasTouched] = useState(false);
 
-  const inputIsValid = validateFunction(enteredValue);
+  const inputIsValid =
+    typeof options === "function"
+      ? options(enteredValue)
+      : typeof options === "object"
+      ? options?.validateFunction(enteredValue)
+      : true;
   const inputIsInValid = inputWasTouched && !inputIsValid;
 
   const onInputChangeHandler = useCallback((value) => {
